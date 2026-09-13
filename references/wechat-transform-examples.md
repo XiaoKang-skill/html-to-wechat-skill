@@ -114,46 +114,45 @@ CSS was:
 ```html
 <table style="width:100%;table-layout:fixed;border-collapse:collapse;border-style:none;border-width:0;border-color:transparent;margin:16px 0;font-size:13px;" cellpadding="0" cellspacing="0" frame="void" rules="none" border="0">
 <colgroup>
-  <col style="width:120px;">
-  <col style="width:160px;">
-  <col style="width:160px;">
-  <col style="width:160px;">
-  <col style="width:160px;">
+  <col style="width:16%;">
+  <col style="width:21%;">
+  <col style="width:21%;">
+  <col style="width:21%;">
+  <col style="width:21%;">
 </colgroup>
 <tbody>
 <tr>
-  <th width="120" style="background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">维度</th>
-  <th width="160" style="background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">AI布道师</th>
-  <th width="160" style="background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">公关/传播总监</th>
-  <th width="160" style="background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">明星代言人</th>
-  <th width="160" style="background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">技术售前</th>
+  <th width="16%" style="width:16%;background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">维度</th>
+  <th width="21%" style="width:21%;background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">AI布道师</th>
+  <th width="21%" style="width:21%;background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">公关/传播总监</th>
+  <th width="21%" style="width:21%;background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">明星代言人</th>
+  <th width="21%" style="width:21%;background:#1E1B4B;color:#fff;padding:8px 6px;text-align:center;font-weight:600;font-size:12px;word-break:break-word;border-style:none;border-width:0;">技术售前</th>
 </tr>
 <tr>
-  <td width="120" style="background:#fafafa;text-align:left;font-weight:600;color:#7C3AED;padding:8px 6px;border-bottom:1px solid #eee;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">核心目标</td>
-  <td width="160" style="background:#fafafa;padding:8px 6px;border-bottom:1px solid #eee;text-align:center;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">赢得开发者信任</td>
-  <td width="160" style="background:#fafafa;padding:8px 6px;border-bottom:1px solid #eee;text-align:center;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">维护品牌形象</td>
-  <td width="160" style="background:#fafafa;padding:8px 6px;border-bottom:1px solid #eee;text-align:center;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">扩大知名度</td>
-  <td width="160" style="background:#fafafa;padding:8px 6px;border-bottom:1px solid #eee;text-align:center;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">促成签单</td>
+  <td width="16%" style="width:16%;background:#fafafa;text-align:left;font-weight:600;color:#7C3AED;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">核心目标</td>
+  <td width="21%" style="width:21%;background:#fafafa;text-align:center;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">赢得开发者信任</td>
+  <td width="21%" style="width:21%;background:#fafafa;text-align:center;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">维护品牌形象</td>
+  <td width="21%" style="width:21%;background:#fafafa;text-align:center;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">扩大知名度</td>
+  <td width="21%" style="width:21%;background:#fafafa;text-align:center;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">促成签单</td>
 </tr>
 <tr>
-  <td width="120" style="text-align:left;font-weight:600;color:#7C3AED;padding:8px 6px;border-bottom:1px solid #eee;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">是否写代码</td>
-  <td width="160" style="padding:8px 6px;border-bottom:1px solid #eee;text-align:center;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">是，能现场写Demo</td>
-  <td width="160" style="padding:8px 6px;border-bottom:1px solid #eee;text-align:center;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">否</td>
-  <td width="160" style="padding:8px 6px;border-bottom:1px solid #eee;text-align:center;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">否</td>
-  <td width="160" style="padding:8px 6px;border-bottom:1px solid #eee;text-align:center;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">少量或不写</td>
+  <td width="16%" style="width:16%;background:#ffffff;text-align:left;font-weight:600;color:#7C3AED;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">是否写代码</td>
+  <td width="21%" style="width:21%;background:#ffffff;text-align:center;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">是，能现场写Demo</td>
+  <td width="21%" style="width:21%;background:#ffffff;text-align:center;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">否</td>
+  <td width="21%" style="width:21%;background:#ffffff;text-align:center;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">否</td>
+  <td width="21%" style="width:21%;background:#ffffff;text-align:center;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">少量或不写</td>
 </tr>
 </tbody>
 </table>
 ```
 
 Key changes:
-- `<colgroup>` added with 5 `<col>` elements (120 / 160 / 160 / 160 / 160)
+- `<colgroup>` added with 5 `<col>` elements using percentage widths (16% + 4×21% = 100%)
 - `table-layout:fixed` forces these widths
-- Each `<td>` / `<th>` has `width="120"` or `width="160"` as HTML attribute fallback
-- Zebra striping applied directly as inline `background:#fafafa` on even rows
-- `border-style:none;border-width:0` on every cell (redundant belt-and-suspenders)
+- Every `<td>` / `<th>` repeats its column percentage in its own code: `width="16%"` / `width="21%"` HTML attribute + `width:16%` / `width:21%` inline style — each cell is self-contained even if colgroup is stripped
+- Every cell carries an explicit inline `background`: header cells `#1E1B4B`, zebra (even) rows `#fafafa`, normal rows `#ffffff` — backgrounds are never inherited from the table or row
+- `border-style:none;border-width:0` on every cell, with the visible `border-bottom:1px solid #eee` declared after them
 - `word-break:break-word` on every cell for text wrapping safety
-- `border-bottom:1px solid #eee` duplicated as inline style for cell border
 
 ---
 
@@ -182,14 +181,18 @@ CSS was:
 <section style="background:linear-gradient(135deg,#1E1B4B,#312E81);color:#fff;border-radius:10px;padding:18px;margin:16px 0;font-size:14px;">
 <p style="color:#A78BFA;font-size:12px;margin:0 0 8px;letter-spacing:1px;">🌍 美国市场</p>
 <table style="width:100%;table-layout:fixed;border-collapse:collapse;border-style:none;border-width:0;border-color:transparent;" cellpadding="0" cellspacing="0" frame="void" rules="none" border="0">
+<colgroup>
+  <col style="width:60%;">
+  <col style="width:40%;">
+</colgroup>
 <tbody>
 <tr>
-  <td style="color:#fff;padding:6px 0;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid rgba(255,255,255,0.1);">Anthropic Claude布道师</td>
-  <td style="color:#4ADE80;font-weight:700;text-align:right;padding:6px 0;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid rgba(255,255,255,0.1);">$240K - $315K</td>
+  <td width="60%" style="width:60%;background:transparent;color:#fff;padding:6px 0;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid rgba(255,255,255,0.1);">Anthropic Claude布道师</td>
+  <td width="40%" style="width:40%;background:transparent;color:#4ADE80;font-weight:700;text-align:right;padding:6px 0;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid rgba(255,255,255,0.1);">$240K - $315K</td>
 </tr>
 <tr>
-  <td style="color:#fff;padding:6px 0;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid rgba(255,255,255,0.1);">Adobe AI布道师</td>
-  <td style="color:#4ADE80;font-weight:700;text-align:right;padding:6px 0;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid rgba(255,255,255,0.1);">$270K+</td>
+  <td width="60%" style="width:60%;background:transparent;color:#fff;padding:6px 0;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid rgba(255,255,255,0.1);">Adobe AI布道师</td>
+  <td width="40%" style="width:40%;background:transparent;color:#4ADE80;font-weight:700;text-align:right;padding:6px 0;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid rgba(255,255,255,0.1);">$270K+</td>
 </tr>
 </tbody>
 </table>
@@ -198,6 +201,9 @@ CSS was:
 
 Key changes:
 - `display:flex` replaced with `<table>` (flex not supported in WeChat)
+- Percentage `<colgroup>` (60% / 40%) — label column wider, right-aligned amount column narrower
+- Every cell repeats its column percentage in its own code: `width="60%"` / `width="40%"` HTML attribute + `width:60%` / `width:40%` inline style
+- Every cell carries an explicit `background:transparent` so the card's gradient shows through
 - `.salary-card` div → `<section>` with full inline styles
 - `.row` flex div → `<tr>` with two `<td>` columns
 - `.amount` class → inline `color:#4ADE80;font-weight:700;text-align:right`

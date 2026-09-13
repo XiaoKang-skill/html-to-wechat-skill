@@ -70,17 +70,19 @@ Key properties:
 - `border-style:none;border-width:0;border-color:transparent` — suppress default borders (WeChat adds unwanted borders).
 - `cellpadding="0" cellspacing="0" frame="void" rules="none" border="0"` — HTML attributes as belt-and-suspenders fallback for editors that strip CSS border properties.
 
-#### 4b. Add `<colgroup>` with column widths matching the source HTML
+#### 4b. Add `<colgroup>` with percentage column widths
 
-Analyze the source HTML to determine each column's proportional width, then use `<colgroup>` with `<col>` elements reflecting those proportions:
+Analyze the source HTML to determine each column's appropriate width **as a percentage**, then write those percentages into a `<colgroup>`. All column percentages must total exactly 100%:
 
 ```html
 <table style="width:100%;table-layout:fixed;..." cellpadding="0" cellspacing="0" frame="void" rules="none" border="0">
 <colgroup>
-  <!-- pixel values reflect the ratio derived from the source HTML -->
-  <col style="width:120px;">
-  <col style="width:160px;">
-  ...
+  <!-- percentages must total exactly 100% -->
+  <col style="width:16%;">
+  <col style="width:21%;">
+  <col style="width:21%;">
+  <col style="width:21%;">
+  <col style="width:21%;">
 </colgroup>
 <tbody>
   ...
@@ -88,32 +90,49 @@ Analyze the source HTML to determine each column's proportional width, then use 
 </table>
 ```
 
-How to determine proportions from the source HTML:
-- If the source CSS specifies column widths (e.g., `td:first-child { width:120px }`, `th { width:25% }`), carry those values over directly.
-- If the source uses percentage-based widths, convert to pixel proportion hints (e.g., `25% / 75%` → `120 / 360` or `1 / 3` ratio → `120 / 360`).
-- If no explicit widths exist, infer from content: label/name columns are narrower, data/content columns are wider. Typical ratios: label column ~30%, data columns ~70% split equally.
-- The pixel values are proportional hints — `table-layout:fixed` distributes available width according to the ratio. Keep label/name columns narrower than data columns.
+How to determine the percentages:
+- If the source CSS already specifies percentage widths (e.g., `th { width:25% }`), carry them over directly and normalize so they total exactly 100%.
+- If the source CSS specifies pixel widths, convert to percentages of the total (e.g., `120px + 4×160px = 760px` → `16% / 21% / 21% / 21% / 21%`).
+- If no explicit widths exist, infer from content: label/name columns are narrower, data/content columns are wider. Typical split: label column ~24-30% for 2-3 column tables (~16-24% for 4-5 column tables); the remaining data columns share the rest equally.
+- Round to whole percentages, then adjust the last column so the total is exactly 100%. Keep label/name columns narrower than data columns.
 
-#### 4c. Add `width` attribute on every `<td>` matching colgroup
+#### 4c. Write the column percentage into EVERY cell's code
 
-Even with colgroup and table-layout:fixed, some WeChat rendering paths ignore colgroup. To guarantee column widths, add the `width` HTML attribute on every `<td>` and `<th>`, using the same pixel values as the corresponding `<col>`:
+Every `<td>` and `<th>` must repeat its column's percentage inside its own code — both as the inline style `width:X%` AND as the HTML attribute `width="X%"`. This makes each cell self-contained: even if WeChat's editor strips `<colgroup>` or ignores `table-layout:fixed`, every cell still declares its own width, so column proportions survive editing and re-copying inside WeChat.
 
 ```html
-<!-- width values must match the colgroup proportions -->
-<td width="120" style="...">label</td>
-<td width="160" style="...">value</td>
+<!-- column 1 cells -->
+<td width="16%" style="width:16%;...">label</td>
+<!-- column 2 cells -->
+<td width="21%" style="width:21%;...">value</td>
 ```
 
-This triple-layered approach (colgroup + table-layout:fixed + td width attribute) ensures consistent rendering across all WeChat clients. The `width` attribute on `<td>` must use the same value as its corresponding `<col>` element — never mismatch.
+The percentage on a cell must exactly match its corresponding `<col>` percentage — never mismatch, never omit it from any cell. This layered approach (colgroup + `table-layout:fixed` + inline `width:X%` on every cell + HTML `width` attribute) ensures consistent rendering across all WeChat clients.
 
-#### 4d. Cell-level inline styles
+#### 4d. Write the background color into EVERY cell's code
 
-Every `<td>` and `<th>` must carry:
+Every `<td>` and `<th>` must also carry an explicit `background` in its own inline style. Never rely on the `<table>`, a `<tr>`, or a parent `<section>` for cell backgrounds — WeChat's editor only reliably keeps what sits directly on the cell:
+
+- Header cells → the header background, e.g. `background:#1E1B4B`.
+- Zebra / even-row cells → `background:#fafafa`.
+- Normal body cells → `background:#ffffff` — write it explicitly even when the cell "has no background", so the editor can never inject a default gray.
+- Cells laid on a colored/gradient card → `background:transparent` so the parent section's background shows through.
+
+Full cell template (width and background always come first, then the visual styles):
+
+```html
+<td width="16%" style="width:16%;background:#fafafa;text-align:left;font-weight:600;color:#7C3AED;padding:8px 6px;line-height:1.6;font-size:12px;word-break:break-word;border-style:none;border-width:0;border-bottom:1px solid #eee;">核心目标</td>
+```
+
+Every cell also keeps:
 - `word-break:break-word` — allow long text to wrap within the cell.
-- `border-style:none;border-width:0` — suppress default cell borders (redundant with table attributes but ensures coverage).
-- `padding`, `text-align`, `font-size`, `line-height`, `color`, `background` — carried over from the original CSS class.
+- `border-style:none;border-width:0` — suppress default cell borders (redundant with table attributes but ensures coverage). Declare any visible border (e.g. `border-bottom:1px solid #eee`, or a full grid `border:1px solid #fbcfe8`) AFTER these two.
+- `padding`, `text-align`, `font-size`, `line-height`, `color` — carried over from the original CSS class.
 
-For zebra striping, set `background:#fafafa` on even-row cells directly in the inline style.
+Common defects to fix when processing already-half-converted HTML:
+- **Duplicate `style` attributes on one element** (e.g. `style="background:..." style="padding:..."`) — browsers drop the second one. Always merge into a single `style` attribute.
+- **Row-level `background` on `<tr>`** — move it onto every cell in that row.
+- **`<thead>` sections** — merge into `<tbody>` so all rows live in one predictable container.
 
 ### Step 5: Replace Unsupported Layouts
 
@@ -132,14 +151,20 @@ WeChat does not reliably support `display:flex`. Replace any flex-based layout (
 **After (table):**
 ```html
 <table style="width:100%;table-layout:fixed;border-collapse:collapse;border-style:none;border-width:0;" cellpadding="0" cellspacing="0" frame="void" rules="none" border="0">
+<colgroup>
+  <col style="width:60%;">
+  <col style="width:40%;">
+</colgroup>
 <tbody>
 <tr>
-<td style="color:#fff;padding:6px 0;word-break:break-word;border-style:none;border-width:0;">Anthropic Claude布道师</td>
-<td style="color:#4ADE80;font-weight:700;text-align:right;padding:6px 0;word-break:break-word;border-style:none;border-width:0;">$240K - $315K</td>
+<td width="60%" style="width:60%;background:transparent;color:#fff;padding:6px 0;word-break:break-word;border-style:none;border-width:0;">Anthropic Claude布道师</td>
+<td width="40%" style="width:40%;background:transparent;color:#4ADE80;font-weight:700;text-align:right;padding:6px 0;word-break:break-word;border-style:none;border-width:0;">$240K - $315K</td>
 </tr>
 </tbody>
 </table>
 ```
+
+Layout tables follow the same rules as data tables: percentage `<colgroup>` totaling 100%, the column percentage written into every cell's code, and an explicit `background` on every cell (`background:transparent` when the table sits on a colored/gradient card so the parent background shows through).
 
 #### 5b. `<blockquote>` → `<section>`
 
@@ -190,7 +215,8 @@ Replace `<div>` wrapper blocks (data boxes, cards, action sections) with `<secti
 | Images | `<img src="https://...">` | `<img src="data:image/png;base64,..." style="width:100%;border-radius:8px;display:block;">` |
 | Outer wrapper | `<div class="article-wrap">` | `<section style="padding:0 16px 8px;">` |
 | Tables | `<table class="compare-table">` | `<table style="width:100%;table-layout:fixed;..." cellpadding="0" cellspacing="0" border="0" frame="void" rules="none">` with `<colgroup>` |
-| Column widths | CSS only | `<colgroup><col style="width:Xpx;">` + `<td width="X">` (proportions from source HTML) |
+| Column widths | CSS only | `<colgroup><col style="width:X%;">` totaling 100% + `width:X%` inline style + `width="X%"` attribute on every cell |
+| Cell backgrounds | row-level CSS / `:nth-child` zebra | explicit `background:...` inline on every single `<td>`/`<th>` (header color / zebra / `#ffffff` / `transparent`) |
 | Flex layouts | `display:flex;justify-content:space-between` | `<table>` with two `<td>` columns |
 | Blockquotes | `<blockquote>` | `<section>` with inline styles |
 | Lists | `<ul><li>` with `:before` pseudo-elements | `<p>` with `<span>` bullet characters |
